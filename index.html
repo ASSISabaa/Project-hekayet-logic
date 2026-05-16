@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حكاية لوجيك — لأهلام ولكل أم تستحق المساعدة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-light:#F5E9C0;--gold-pale:#FDF8EC;
+  --deep:#0D0B14;--deep2:#1A1628;
+  --cream:#FAF8F4;--cream2:#F0EBE0;
+  --purple:#534AB7;--purple-light:#EEEDFE;--purple-mid:#7F77DD;
+  --teal:#1D9E75;--teal-light:#E1F5EE;--teal-deep:#085041;
+  --coral:#D85A30;--coral-light:#FAECE7;
+  --text:#1A1628;--muted:#6B6282;--light:#A09AB8;
+}
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--text);direction:rtl}
+.nav{background:var(--deep);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-star{width:30px;height:30px;background:var(--gold);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.logo-name{font-size:16px;font-weight:900;color:#fff}
+.logo-name span{color:var(--gold)}
+.nav-tabs{display:flex;gap:3px}
+.nav-tab{background:transparent;border:none;color:rgba(255,255,255,0.45);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s}
+.nav-tab.active{background:rgba(201,168,76,0.15);color:var(--gold)}
+.hero{background:linear-gradient(160deg,#0D0B14 0%,#1A1628 100%);padding:48px 20px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(201,168,76,0.04);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(83,74,183,0.06);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,0.1);border:0.5px solid rgba(201,168,76,0.3);border-radius:20px;padding:5px 14px;margin-bottom:22px}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-badge span{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.3px}
+.hero h1{font-size:30px;font-weight:900;color:#fff;line-height:1.22;margin-bottom:10px;letter-spacing:-0.5px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75;max-width:400px;margin:0 auto 28px}
+.tabs-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tab-btn{border:none;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer;transition:all 0.2s}
+.tab-btn.active{background:var(--gold);color:var(--deep)}
+.tab-btn:not(.active){background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.6);border:0.5px solid rgba(255,255,255,0.1)}
+.tab-btn:not(.active):hover{background:rgba(255,255,255,0.12);color:#fff}
+.main{max-width:660px;margin:0 auto;padding:24px 16px 80px}
+.panel{display:none;animation:fadeIn 0.3s ease}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card{background:#fff;border-radius:18px;padding:22px;border:0.5px solid rgba(0,0,0,0.07);margin-bottom:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.gift-banner{background:linear-gradient(135deg,#0D0B14,#1A1628);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:14px;margin-bottom:16px;border:0.5px solid rgba(201,168,76,0.15)}
+.gift-icon{font-size:28px;flex-shrink:0}
+.gift-text h3{font-size:14px;font-weight:800;color:var(--gold);margin-bottom:3px}
+.gift-text p{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6}
+.action-btns{display:flex;gap:8px;margin-bottom:14px}
+.action-btn{flex:1;border:none;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;padding:11px;border-radius:11px;cursor:pointer;transition:all 0.2s}
+.action-btn.cam{background:var(--deep);color:var(--gold)}
+.action-btn.cam:hover{background:#1A1628}
+.action-btn.upl{background:var(--cream2);color:var(--text)}
+.action-btn.upl:hover{background:#E5DED2}
+.camera-area{border-radius:14px;overflow:hidden;background:#000;margin-bottom:14px;display:none;position:relative}
+.camera-area video{width:100%;display:block}
+.cam-overlay{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:12px}
+.cam-btn{background:rgba(255,255,255,0.92);border:none;border-radius:50%;width:52px;height:52px;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.cam-btn.cap{width:62px;height:62px;font-size:26px}
+.preview-wrap{border-radius:14px;overflow:hidden;margin-bottom:14px;display:none;position:relative}
+.preview-wrap img{width:100%;max-height:220px;object-fit:cover;display:block}
+.preview-x{position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.or-row{display:flex;align-items:center;gap:10px;margin:12px 0}
+.or-line{flex:1;height:0.5px;background:rgba(0,0,0,0.09)}
+.or-txt{font-size:11px;color:var(--light);font-weight:600}
+.tinput{width:100%;border:0.5px solid rgba(0,0,0,0.12);border-radius:11px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:14px;color:var(--text);outline:none;resize:vertical;min-height:82px;transition:border-color 0.2s}
+.tinput:focus{border-color:var(--gold)}
+.tinput::placeholder{color:var(--light)}
+.badges-row{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.badge{padding:7px 13px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid transparent;transition:all 0.2s}
+.badge.on{background:var(--coral-light);color:#712B13;border-color:var(--coral)}
+.badge.off{background:var(--cream2);color:var(--muted)}
+.main-btn{width:100%;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;padding:14px;border-radius:13px;border:none;cursor:pointer;margin-top:12px;transition:all 0.2s}
+.main-btn.dark{background:var(--deep);color:var(--gold)}
+.main-btn.dark:hover{background:#1A1628}
+.main-btn.teal-btn{background:var(--teal);color:#fff}
+.main-btn.teal-btn:hover{background:#178a65}
+.main-btn:disabled{opacity:0.45;cursor:not-allowed}
+.spinner-wrap{display:none;text-align:center;padding:22px}
+.spinner{width:34px;height:34px;border:3px solid var(--gold-light);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 10px}
+.spinner.t{border-color:var(--teal-light);border-top-color:var(--teal)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner-txt{font-size:13px;color:var(--muted);font-weight:600}
+.result-box{border-radius:14px;padding:20px;text-align:center;margin-top:14px;display:none}
+.result-box.safe{background:var(--teal-light);border:0.5px solid rgba(29,158,117,0.25)}
+.result-box.danger{background:var(--coral-light);border:0.5px solid rgba(216,90,48,0.25)}
+.res-emoji{font-size:40px;margin-bottom:8px}
+.res-title{font-size:17px;font-weight:900;margin-bottom:6px}
+.safe .res-title{color:var(--teal-deep)}.danger .res-title{color:#712B13}
+.res-detail{font-size:13px;line-height:1.7}
+.safe .res-detail{color:#0F6E56}.danger .res-detail{color:#993C1D}
+.chat-box{background:#fff;border-radius:18px;border:0.5px solid rgba(0,0,0,0.07);overflow:hidden;margin-bottom:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.chat-head{background:var(--purple-light);padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:0.5px solid rgba(83,74,183,0.1)}
+.chat-av{width:40px;height:40px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:900;flex-shrink:0}
+.chat-info h3{font-size:14px;font-weight:800;color:var(--purple);margin-bottom:2px}
+.chat-info p{font-size:11px;color:var(--muted)}
+.online-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;margin-left:4px}
+.msgs{padding:16px;min-height:260px;max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:11px 14px;border-radius:14px;font-size:13px;line-height:1.65}
+.msg.ai{background:var(--purple-light);color:var(--text);border-bottom-right-radius:4px;align-self:flex-start}
+.msg.user{background:var(--deep);color:#fff;border-bottom-left-radius:4px;align-self:flex-end}
+.msg-name{font-size:10px;font-weight:700;color:var(--purple);margin-bottom:4px}
+.chat-foot{padding:12px 14px;border-top:0.5px solid rgba(0,0,0,0.06);display:flex;gap:8px;align-items:flex-end}
+.chat-in{flex:1;border:0.5px solid rgba(0,0,0,0.12);border-radius:10px;padding:9px 12px;font-family:'Tajawal',sans-serif;font-size:13px;outline:none;resize:none;max-height:90px;min-height:40px;transition:border-color 0.2s}
+.chat-in:focus{border-color:var(--purple-mid)}
+.send-btn{background:var(--purple);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;transition:opacity 0.2s}
+.send-btn:hover{opacity:0.88}
+.send-btn:disabled{opacity:0.45;cursor:not-allowed}
+.quick-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.qbtn{background:var(--purple-light);color:var(--purple);border:0.5px solid rgba(83,74,183,0.2);border-radius:20px;padding:6px 13px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.qbtn:hover{background:var(--purple);color:#fff}
+.typing{display:flex;gap:4px;align-items:center;padding:2px 0}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--purple-mid);animation:bounce 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:5px}.fg.full{grid-column:1/-1}
+.flabel{font-size:12px;font-weight:700;color:var(--text)}
+select,.finput{border:0.5px solid rgba(0,0,0,0.12);border-radius:10px;padding:10px 12px;font-family:'Tajawal',sans-serif;font-size:13px;color:var(--text);outline:none;background:#fff;transition:border-color 0.2s}
+select:focus,.finput:focus{border-color:var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:6px 13px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid transparent;background:var(--cream2);color:var(--muted);transition:all 0.2s}
+.chip.sel{background:var(--teal-light);color:var(--teal-deep);border-color:var(--teal)}
+.plan-result{background:#fff;border-radius:18px;padding:22px;border:0.5px solid rgba(0,0,0,0.07);display:none;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.plan-result h3{font-size:16px;font-weight:900;color:var(--text);margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid rgba(0,0,0,0.07)}
+.day-block{margin-bottom:18px}
+.day-title{font-size:13px;font-weight:800;color:var(--teal-deep);background:var(--teal-light);padding:6px 12px;border-radius:8px;margin-bottom:10px;display:inline-block}
+.act-row{display:flex;gap:10px;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,0.05)}
+.act-row:last-child{border-bottom:none}
+.act-time{font-size:11px;font-weight:700;color:var(--muted);min-width:64px;padding-top:2px}
+.act-body h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.act-body p{font-size:12px;color:var(--muted);line-height:1.55}
+.act-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-top:4px}
+.act-tag.fun{background:var(--gold-pale);color:#633806}
+.act-tag.learn{background:var(--purple-light);color:#3C3489}
+.act-tag.rest{background:var(--teal-light);color:var(--teal-deep)}
+footer{background:var(--deep2);padding:22px;text-align:center;border-top:0.5px solid rgba(255,255,255,0.05)}
+footer p{font-size:12px;color:rgba(255,255,255,0.3)}
+footer span{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">
+    <div class="logo-star">⭐</div>
+    <span class="logo-name">حكاية <span>لوجيك</span></span>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="sw('allergy',this)">🔍 الحساسية</button>
+    <button class="nav-tab" onclick="sw('adhd',this)">🧠 ADHD</button>
+    <button class="nav-tab" onclick="sw('school',this)">📚 التعليم</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge"><div class="hero-dot"></div><span>هدية من حكاية لوجيك — مجاناً للأبد</span></div>
+  <h1>لأهلام<br>ولكل أم <em>تستحق المساعدة</em></h1>
+  <p>فاحص الحساسية بالكاميرا، مساعد ADHD، وخطة التعليم في البيت — كل شي بالذكاء الاصطناعي</p>
+  <div class="tabs-row">
+    <button class="tab-btn active" onclick="sw('allergy',null,this)">🔍 فاحص الحساسية</button>
+    <button class="tab-btn" onclick="sw('adhd',null,this)">🧠 مساعد ADHD</button>
+    <button class="tab-btn" onclick="sw('school',null,this)">📚 خطة التعليم</button>
+  </div>
+</section>
+
+<div class="main">
+
+  <div class="panel active" id="panel-allergy">
+    <div class="gift-banner"><span class="gift-icon">🛡️</span><div class="gift-text"><h3>فاحص الحساسية بالذكاء الاصطناعي</h3><p>صوّري مكونات أي منتج وسيخبرك فوراً إذا كان آمناً لطفلك</p></div></div>
+    <div class="card">
+      <div class="action-btns">
+        <button class="action-btn cam" onclick="startCam()">📷 تصوير مباشر</button>
+        <button class="action-btn upl" onclick="document.getElementById('fimg').click()">🖼️ رفع صورة</button>
+        <input id="fimg" type="file" accept="image/*" capture="environment" style="display:none" onchange="handleImg(this)">
+      </div>
+      <div class="camera-area" id="camArea">
+        <video id="vid" autoplay playsinline></video>
+        <div class="cam-overlay">
+          <button class="cam-btn" onclick="stopCam()">✕</button>
+          <button class="cam-btn cap" onclick="snap()">📸</button>
+        </div>
+      </div>
+      <div class="preview-wrap" id="prevWrap">
+        <img id="prevImg" src="" alt="">
+        <button class="preview-x" onclick="clearImg()">✕</button>
+      </div>
+      <canvas id="cvs" style="display:none"></canvas>
+      <div class="or-row"><div class="or-line"></div><span class="or-txt">أو اكتبي المكونات يدوياً</span><div class="or-line"></div></div>
+      <textarea class="tinput" id="ingTxt" placeholder="مثال: دقيق قمح، سكر، زيت نباتي، حليب مجفف، بيض، فانيليا..."></textarea>
+      <div style="margin-top:14px">
+        <div class="flabel" style="margin-bottom:8px">حساسيات طفلك:</div>
+        <div class="badges-row" id="alList"></div>
+      </div>
+      <button class="main-btn dark" id="scanBtn" onclick="runScan()">🔍 افحصي الآن</button>
+      <div class="spinner-wrap" id="scanSpin"><div class="spinner"></div><div class="spinner-txt">الذكاء الاصطناعي يحلل المكونات...</div></div>
+      <div class="result-box" id="scanRes"><div class="res-emoji" id="resE"></div><div class="res-title" id="resT"></div><div class="res-detail" id="resD"></div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-adhd">
+    <div class="gift-banner"><span class="gift-icon">🧠</span><div class="gift-text"><h3>مساعد ADHD الذكي</h3><p>اسأليني أي شيء عن ADHD أو التنمر أو التعامل اليومي مع طفلك</p></div></div>
+    <div class="quick-row">
+      <button class="qbtn" onclick="askQ('كيف أساعد طفلي على التركيز؟')">كيف أساعده على التركيز؟</button>
+      <button class="qbtn" onclick="askQ('طفلي وقف عن المدرسة بسبب التنمر، شو أعمل؟')">وقف بسبب التنمر</button>
+      <button class="qbtn" onclick="askQ('كيف أنظم روتين يومي لطفل ADHD؟')">روتين يومي ADHD</button>
+      <button class="qbtn" onclick="askQ('كيف أبني ثقة طفلي بنفسه بعد التنمر؟')">إعادة بناء الثقة</button>
+      <button class="qbtn" onclick="askQ('ما علامات ADHD عند الأطفال؟')">علامات ADHD</button>
+    </div>
+    <div class="chat-box">
+      <div class="chat-head">
+        <div class="chat-av">ح</div>
+        <div class="chat-info"><h3>مساعد حكاية لوجيك <span class="online-dot"></span></h3><p>متخصص في ADHD والتنمر وصعوبات التعلم</p></div>
+      </div>
+      <div class="msgs" id="msgs">
+        <div class="msg ai"><div class="msg-name">مساعد حكاية لوجيك</div>أهلاً بك! 🤍 أنا هنا لمساعدتك في كل ما يخص طفلك. اسأليني بكل حرية.</div>
+      </div>
+      <div class="chat-foot">
+        <textarea class="chat-in" id="chatIn" placeholder="اكتبي سؤالك هنا..." rows="1" onkeydown="onEnter(event)"></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMsg()">إرسال</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-school">
+    <div class="gift-banner"><span class="gift-icon">📚</span><div class="gift-text"><h3>خطة التعليم في البيت</h3><p>أخبريني عن طفلك وسأولّد خطة يومية مخصصة — بسيطة وممتعة</p></div></div>
+    <div class="card">
+      <div class="form-grid">
+        <div class="fg"><label class="flabel">عمر الطفل</label><select id="age"><option>6 سنوات</option><option>7 سنوات</option><option>8 سنوات</option><option selected>9 سنوات</option><option>10 سنوات</option><option>11 سنوات</option><option>12 سنوات</option><option>13 سنوات</option><option>14 سنوات</option></select></div>
+        <div class="fg"><label class="flabel">مدة التعليم اليومية</label><select id="stime"><option>ساعة واحدة</option><option selected>ساعتان</option><option>3 ساعات</option><option>4 ساعات</option></select></div>
+        <div class="fg"><label class="flabel">مستوى ADHD</label><select id="adhd"><option>خفيف</option><option selected>متوسط</option><option>شديد</option></select></div>
+        <div class="fg"><label class="flabel">سبب التعليم المنزلي</label><select id="reason"><option selected>التنمر</option><option>صعوبات تعلم</option><option>ADHD شديد</option><option>اختيار شخصي</option></select></div>
+        <div class="fg full"><label class="flabel">اهتمامات طفلك</label><input class="finput" id="ints" type="text" placeholder="مثال: كرة القدم، الرسم، الألعاب..."></div>
+        <div class="fg full"><label class="flabel">المواد الدراسية</label><div class="chips" id="subGrid"></div></div>
+      </div>
+      <button class="main-btn teal-btn" id="genBtn" onclick="genPlan()">✨ ولّدي الخطة التعليمية</button>
+      <div class="spinner-wrap" id="planSpin"><div class="spinner t"></div><div class="spinner-txt">الذكاء الاصطناعي يصمّم خطة مخصصة لطفلك...</div></div>
+    </div>
+    <div class="plan-result" id="planRes"><h3 id="planTitle">📅 الخطة التعليمية اليومية</h3><div id="planContent"></div></div>
+  </div>
+
+</div>
+
+<footer><p>صُنع بكل حب من <span>حكاية لوجيك</span> — هدية مجانية لكل أم تستحق المساعدة 🤍</p></footer>
+
+<script>
+const ALS=['مكسرات','حليب','بيض','قمح/جلوتين','فول الصويا','سمك','قشريات','سمسم','فول السوداني'];
+const SUBS=['رياضيات','عربي','إنجليزي','علوم','تاريخ','جغرافيا','فنون','رياضة','دين'];
+let selAl=new Set(['مكسرات','حليب']),selSub=new Set(['رياضيات','عربي','علوم']);
+let chatHist=[],imgB64=null,camStream=null;
+
+function init(){
+  const al=document.getElementById('alList');
+  ALS.forEach(a=>{const b=document.createElement('button');b.className='badge '+(selAl.has(a)?'on':'off');b.textContent=a;b.onclick=()=>{selAl.has(a)?(selAl.delete(a),b.className='badge off'):(selAl.add(a),b.className='badge on')};al.appendChild(b)});
+  const sg=document.getElementById('subGrid');
+  SUBS.forEach(s=>{const c=document.createElement('button');c.className='chip '+(selSub.has(s)?'sel':'');c.textContent=s;c.onclick=()=>{selSub.has(s)?(selSub.delete(s),c.className='chip'):(selSub.add(s),c.className='chip sel')};sg.appendChild(c)});
+}
+
+function sw(id,navEl,heroEl){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  const i={allergy:0,adhd:1,school:2}[id];
+  document.querySelectorAll('.nav-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.tab-btn').forEach((t,j)=>t.classList.toggle('active',j===i));
+  if(id!=='allergy')stopCam();
+}
+
+async function startCam(){try{camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});document.getElementById('vid').srcObject=camStream;document.getElementById('camArea').style.display='block';document.getElementById('prevWrap').style.display='none';}catch(e){alert('لم نتمكن من الوصول للكاميرا. جربي رفع صورة.');}}
+function stopCam(){if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;}document.getElementById('camArea').style.display='none';}
+function snap(){const v=document.getElementById('vid'),c=document.getElementById('cvs');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);const d=c.toDataURL('image/jpeg',0.85);imgB64=d.split(',')[1];document.getElementById('prevImg').src=d;document.getElementById('prevWrap').style.display='block';stopCam();}
+function handleImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{const d=e.target.result;imgB64=d.split(',')[1];document.getElementById('prevImg').src=d;document.getElementById('prevWrap').style.display='block';};r.readAsDataURL(f);}
+function clearImg(){imgB64=null;document.getElementById('prevWrap').style.display='none';document.getElementById('prevImg').src='';}
+
+async function callAPI(payload){
+  const r=await fetch('/api/gemini',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const d=await r.json();
+  if(d.error)throw new Error(d.error.message||'خطأ في الاتصال');
+  return d.candidates[0].content.parts[0].text;
+}
+
+async function runScan(){
+  const txt=document.getElementById('ingTxt').value.trim();
+  if(!txt&&!imgB64){alert('صوّري المنتج أو اكتبي المكونات أولاً');return;}
+  const als=[...selAl].join('، ');
+  document.getElementById('scanBtn').disabled=true;
+  document.getElementById('scanRes').style.display='none';
+  document.getElementById('scanSpin').style.display='block';
+  try{
+    const sys=`أنت متخصص حساسية غذائية. حساسيات الطفل: ${als}. رد بـ JSON فقط بدون أي نص آخر: {"safe":true,"found":[],"message":"رسالة دافئة للأم"}`;
+    const parts=[];
+    if(imgB64)parts.push({inlineData:{mimeType:'image/jpeg',data:imgB64}});
+    parts.push({text:sys+'\n\n'+(txt||'اقرأ المكونات من الصورة وحللها.')});
+    const rep=await callAPI({contents:[{role:'user',parts}],generationConfig:{maxOutputTokens:600,temperature:0.3}});
+    let res;try{res=JSON.parse(rep.replace(/```json|```/g,'').trim());}catch{res={safe:false,found:[],message:rep};}
+    const b=document.getElementById('scanRes');b.className='result-box '+(res.safe?'safe':'danger');
+    document.getElementById('resE').textContent=res.safe?'✅':'⛔';
+    document.getElementById('resT').textContent=res.safe?'آمن لطفلك 🌿':'تحذير — يحتوي على حساسية!';
+    document.getElementById('resD').textContent=res.message;b.style.display='block';
+  }catch(e){
+    const b=document.getElementById('scanRes');b.className='result-box danger';
+    document.getElementById('resE').textContent='⚠️';
+    document.getElementById('resT').textContent='خطأ في الاتصال';
+    document.getElementById('resD').textContent='تأكدي من الاتصال بالإنترنت وحاولي مجدداً.';
+    b.style.display='block';
+  }
+  document.getElementById('scanSpin').style.display='none';
+  document.getElementById('scanBtn').disabled=false;
+}
+
+async function sendMsg(txt){
+  const inp=document.getElementById('chatIn');const msg=txt||inp.value.trim();if(!msg)return;
+  inp.value='';addMsg(msg,'user');document.getElementById('sendBtn').disabled=true;
+  const sys='أنت مساعد متخصص ومتعاطف في ADHD والتنمر وصعوبات التعلم. تتحدث بعربي بسيط ودافئ مع الأمهات. تقدم نصائح عملية. اسمك مساعد حكاية لوجيك.';
+  chatHist.push({role:'user',parts:[{text:msg}]});
+  const td=addTyping();
+  try{
+    const contents=chatHist.map((m,i)=>({role:m.role,parts:i===0?[{text:sys+'\n\n'+m.parts[0].text}]:m.parts}));
+    const rep=await callAPI({contents,generationConfig:{maxOutputTokens:700,temperature:0.8}});
+    td.remove();addMsg(rep,'ai');chatHist.push({role:'model',parts:[{text:rep}]});
+  }catch(e){td.remove();addMsg('عذراً، حدث خطأ. حاولي مجدداً.','ai');}
+  document.getElementById('sendBtn').disabled=false;
+}
+
+function askQ(q){sw('adhd');setTimeout(()=>sendMsg(q),100);}
+function addMsg(t,r){const m=document.getElementById('msgs'),d=document.createElement('div');d.className='msg '+r;if(r==='ai')d.innerHTML=`<div class="msg-name">مساعد حكاية لوجيك</div>${t.replace(/\n/g,'<br>')}`;else d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight;return d;}
+function addTyping(){const m=document.getElementById('msgs'),d=document.createElement('div');d.className='msg ai';d.innerHTML=`<div class="msg-name">مساعد حكاية لوجيك</div><div class="typing"><span></span><span></span><span></span></div>`;m.appendChild(d);m.scrollTop=m.scrollHeight;return d;}
+function onEnter(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+
+async function genPlan(){
+  const age=document.getElementById('age').value,stime=document.getElementById('stime').value,adhd=document.getElementById('adhd').value,reason=document.getElementById('reason').value,ints=document.getElementById('ints').value||'ألعاب ورسم',subs=[...selSub].join('، ');
+  document.getElementById('genBtn').disabled=true;document.getElementById('planSpin').style.display='block';document.getElementById('planRes').style.display='none';
+  try{
+    const prompt=`أنت متخصص تعليم منزلي للأطفال. اصنع خطة تعليمية لطفل عمره ${age}، مدة ${stime}، مستوى ADHD ${adhd}، سبب التعليم المنزلي: ${reason}، اهتماماته: ${ints}، المواد: ${subs}. خطة لليومين الأحد والاثنين مع 4 أنشطة كل يوم. رد بـ JSON فقط: {"title":"عنوان","days":[{"day":"اليوم","activities":[{"time":"الوقت","title":"النشاط","description":"وصف","type":"fun/learn/rest"}]}]}`;
+    const rep=await callAPI({contents:[{role:'user',parts:[{text:prompt}]}],generationConfig:{maxOutputTokens:1000,temperature:0.7}});
+    let plan;try{plan=JSON.parse(rep.replace(/```json|```/g,'').trim());}catch{plan=null;}
+    if(plan){
+      document.getElementById('planTitle').textContent='📅 '+(plan.title||'الخطة التعليمية');
+      const c=document.getElementById('planContent');c.innerHTML='';
+      (plan.days||[]).forEach(day=>{
+        const b=document.createElement('div');b.className='day-block';b.innerHTML=`<div class="day-title">📆 ${day.day}</div>`;
+        (day.activities||[]).forEach(a=>{const row=document.createElement('div');row.className='act-row';const tl=a.type==='fun'?'🎮 ممتع':a.type==='rest'?'😌 راحة':'📖 تعلم';const tc=a.type==='fun'?'fun':a.type==='rest'?'rest':'learn';row.innerHTML=`<div class="act-time">${a.time||''}</div><div class="act-body"><h4>${a.title||''}</h4><p>${a.description||''}</p><span class="act-tag ${tc}">${tl}</span></div>`;b.appendChild(row);});
+        c.appendChild(b);
+      });
+    }
+    document.getElementById('planRes').style.display='block';
+  }catch(e){document.getElementById('planRes').innerHTML='<p style="padding:16px;text-align:center;color:#D85A30">خطأ في الاتصال. حاولي مجدداً.</p>';document.getElementById('planRes').style.display='block';}
+  document.getElementById('planSpin').style.display='none';document.getElementById('genBtn').disabled=false;
+}
+
+init();
+</script>
+</body>
+</html>
